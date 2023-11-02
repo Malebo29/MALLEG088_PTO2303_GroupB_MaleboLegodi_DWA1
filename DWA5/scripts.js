@@ -1,7 +1,7 @@
-const form = document.querySelector("[data-form]");
-const result = document.querySelector("[data-result]");
+const form = document.querySelector('[data-form]');
+const result = document.querySelector('[data-result]');
 
-form.addEventListener("submit", (event) => {
+form.addEventListener('submit', (event) => {
 
   event.preventDefault();
   const entries = new FormData(event.target);
@@ -18,14 +18,10 @@ form.addEventListener("submit", (event) => {
 
 
 if (dividend === isNaN() || divider === isNaN()) {
-      console.log(dividend)
-      document.getElementsByName('body').innerText = 'Something critical went wrong. Please reload the page.'
-      console.log(
-        new Error('Something critical went wrong. Please reload the page.')
-      )} 
+    console.log(dividend)
+    document.getElementsByName('body').innerText = 'Something critical went wrong. Please reload the page.'
+    console.log(
+    const somethingWentWorng = new Error('Something critical went wrong. Please reload the page.')
+)
 
-  // else {
-  //   result.innerText = Math.floor(dividend / divider);
-  // }
-
-});
+}});
