@@ -1,8 +1,14 @@
+/* eslint-disable */
+
 import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
 import { setTheme } from "./theme.js";
 
 let page = 1;
 let matches = books;
+
+const selectHtmlElement = (attribute) => {
+  return document.querySelector(attribute);
+};
 
 /**
  * A generic function that toggles the three overlays - the settings, search and the book preview (data-list-active) overlay.
@@ -10,10 +16,6 @@ let matches = books;
  */
 const toggleOverlay = (open, overlay) => {
   selectHtmlElement(overlay).open = open;
-};
-
-const selectHtmlElement = (attribute) => {
-  return document.querySelector(attribute);
 };
 
 const listFragment = document.createDocumentFragment();
