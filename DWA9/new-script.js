@@ -28,10 +28,10 @@ const createBookListing = (books, authors, genres, BOOK_PER_PAGE) => {
 
   /**
    * @typedef {Object} Book
-   * @prop {string} author - The ID of the author of the book.
-   * @prop {string} id - The ID of the book.
-   * @prop {string} image - The URL of the book's cover image.
-   * @prop {string} title - The title of the book.
+   * @property {string} author - The ID of the author of the book.
+   * @property {string} id - The ID of the book.
+   * @property {string} image - The URL of the book's cover image.
+   * @property {string} title - The title of the book.
    */
 
   /**
@@ -57,6 +57,23 @@ const createBookListing = (books, authors, genres, BOOK_PER_PAGE) => {
     const bookCardElement = createBookPreview({ author, id, image, title });
     listFragment.appendChild(bookCardElement);
   }
+
+  selectHtmlElement("[data-list-items]").appendChild(listFragment);
+  selectHtmlElement("[data-list-button]").innerText = `Show more (${
+    books.length - BOOKS_PER_PAGE
+  })`;
+
+  selectHtmlElement("[data-list-button]").disabled =
+    matches.length - page * BOOKS_PER_PAGE <= 0;
+
+  selectHtmlElement("[data-list-button]").innerHTML = `
+            <span>Show more</span>
+            <span class="list__remaining"> (${
+              matches.length - page * BOOKS_PER_PAGE > 0
+                ? matches.length - page * BOOKS_PER_PAGE
+                : 0
+            })</span>
+        `;
 
   const createOptionElement = (value, text) => {
     const optionElement = document.createElement("option");
@@ -86,37 +103,20 @@ const createBookListing = (books, authors, genres, BOOK_PER_PAGE) => {
     document.querySelector("[data-search-authors]"),
     authors,
     "All Authors"
-  );  
-
-  selectHtmlElement("[data-list-items]").appendChild(listFragment);
-  selectHtmlElement("[data-list-button]").innerText = `Show more (${
-    books.length - BOOKS_PER_PAGE
-  })`;
-
-  selectHtmlElement("[data-list-button]").disabled =
-    matches.length - page * BOOKS_PER_PAGE <= 0;
-
-  selectHtmlElement("[data-list-button]").innerHTML = `
-          <span>Show more</span>
-          <span class="list__remaining"> (${
-            matches.length - page * BOOKS_PER_PAGE > 0
-              ? matches.length - page * BOOKS_PER_PAGE
-              : 0
-          })</span>
-      `;
+  );
 
   /**
    * @typedef {Object} Book
-   * @prop {string} title - The title of the book.
-   * @prop {string} author - The ID of the author of the book.
-   * @prop {string[]} genres - The genres of the book.
+   * @property {string} title - The title of the book.
+   * @property {string} author - The ID of the author of the book.
+   * @property {string[]} genres - The genres of the book.
    */
 
   /**
    * @typedef {Object} Filters
-   * @prop {string} title - The text phrase to filter books by title.
-   * @prop {string} author - The ID of the author to filter books by author.
-   * @prop {string} genre - The genre to filter books by genre.
+   * @property {string} title - The text phrase to filter books by title.
+   * @property {string} author - The ID of the author to filter books by author.
+   * @property {string} genre - The genre to filter books by genre.
    */
 
   /**
