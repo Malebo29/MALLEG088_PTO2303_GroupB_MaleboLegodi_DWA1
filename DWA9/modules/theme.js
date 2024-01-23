@@ -1,4 +1,5 @@
 /* eslint-disable */
+//@ts-check
 
 /**
  * @typedef {Object} ThemeSettings
