@@ -1,4 +1,4 @@
-import { createComponent } from "../utils/components.js";
+import { html, render } from "../node_modules/lit-html";
 import { getState, dispatch, State } from "../model/store_store.js";
 import { addTask, get } from "../model/store_actions.js";
 
@@ -37,36 +37,9 @@ createComponent({
     const html = render(nextState);
     const [wrapper] = getHtml("wrapper");
     wrapper.innerHTML = html;
-
-    // const nextTasks = Object.values(nextState.tasks);
-
-    // const prevTaskIds = Object.keys(prevState.tasks);
-    // const nextTaskIds = Object.keys(nextState.tasks);
-
-    // const [ul] = getHtml("list");
-
-    // // we map over it and check what has been added
-    // nextTasks.forEach((item) => {
-    //   if (!prevTaskIds.includes(item.id)) return;
-    //   const li = document.createElement("li");
-    //   li.dataset.id = item.id;
-    //   li.innerText = item.title;
-    //   ul.appendChild(li);
-    // });
-
-    // // we map over it and check what has been removed
-    // prevTaskIds.forEach((id) => {
-    //   if (nextTaskIds.includes(id)) return;
-    //   const node = ul.querySelector(`[data-id="${id}]`);
-
-    //   if (!(node instanceof HTMLElement)) {
-    //     throw new Error("Required to be an HTMLElement");
-    //   }
-    //   node.remove();
-    // });
   },
 
-  template: /* html */ "<div data-wrapper></div>",
+  templtae: /* html */ "<div data-wrapper></div>",
 });
 
 /**
